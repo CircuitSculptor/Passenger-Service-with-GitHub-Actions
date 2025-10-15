@@ -23,7 +23,12 @@ public class PassengerServiceTest {
 
     @Test
     void createThenFindById() {
-        Passenger p = new Passenger("B1", "Bartek", "bartek@atu.ie");
+        //Passenger p = new Passenger("B1", "Bartek", "bartek@atu.ie");
+        Passenger p = Passenger.builder()
+                .passengerId("B1")
+                        .name("Bartek")
+                                .email("bartek@atu.ie")
+                                        .build();
 
         service.create(p);
 
