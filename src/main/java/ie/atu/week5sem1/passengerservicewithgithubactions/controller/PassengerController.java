@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,9 +16,13 @@ public class PassengerController {
 
      private final PassengerService service;
 
-     @GetMapping
      public PassengerController(PassengerService Service) {
          this.service = Service;
+     }
+
+     @GetMapping
+     public ResponseEntity<List<Passenger>> getAll() {
+         return ResponseEntity.ok(service.findAll());
      }
 
      @GetMapping("/{id}")
