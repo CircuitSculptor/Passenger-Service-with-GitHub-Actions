@@ -16,8 +16,8 @@ public class PassengerController {
 
      private final PassengerService service;
 
-     public PassengerController(PassengerService Service) {
-         this.service = Service;
+     public PassengerController(PassengerService service) {
+         this.service = service;
      }
 
      @GetMapping
