@@ -30,7 +30,7 @@ public class PassengerServiceTest {
 
         service.create(p);
 
-        Optional<Passenger> found = service.findById("P");
+        Optional<Passenger> found = service.findById("P1");
         assertTrue(found.isPresent());
         assertEquals("Bartek", found.get().getName());
     }
@@ -43,11 +43,13 @@ public class PassengerServiceTest {
                 .email("b@atu.ie")
                 .build());
 
-        assertThrows(IllegalArgumentException.class,  () ->
+        assertThrows(IllegalStateException.class,  () ->
                 service.create(Passenger.builder()
-                        .passengerId("B2")
+                        .passengerId("P2")
                         .name("Bobby")
                         .email("bob@ex.com")
                         .build()));
     }
 }
+
+//Test Github actions
