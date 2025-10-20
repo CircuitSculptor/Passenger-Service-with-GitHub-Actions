@@ -43,9 +43,9 @@ public class PassengerServiceTest {
                 .email("b@atu.ie")
                 .build());
 
-        assertThrows(IllegalArgumentException.class,  () ->
+        assertThrows(IllegalStateException.class,  () ->
                 service.create(Passenger.builder()
-                        .passengerId("B2")
+                        .passengerId("P2")
                         .name("Bobby")
                         .email("bob@ex.com")
                         .build()));
