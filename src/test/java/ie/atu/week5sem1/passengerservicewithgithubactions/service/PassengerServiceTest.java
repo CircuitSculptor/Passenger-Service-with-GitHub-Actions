@@ -30,7 +30,7 @@ public class PassengerServiceTest {
 
         service.create(p);
 
-        Optional<Passenger> found = service.findById("P");
+        Optional<Passenger> found = service.findById("P1");
         assertTrue(found.isPresent());
         assertEquals("Bartek", found.get().getName());
     }
