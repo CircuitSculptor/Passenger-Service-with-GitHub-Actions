@@ -10,8 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
-
 public class PassengerServiceTest {
 
     private PassengerService service;
@@ -25,14 +23,14 @@ public class PassengerServiceTest {
     void createThenFindById() {
         //Passenger p = new Passenger("B1", "Bartek", "bartek@atu.ie");
         Passenger p = Passenger.builder()
-                .passengerId("B1")
+                .passengerId("P1")
                         .name("Bartek")
                                 .email("bartek@atu.ie")
                                         .build();
 
         service.create(p);
 
-        Optional<Passenger> found = service.findById("B1");
+        Optional<Passenger> found = service.findById("P");
         assertTrue(found.isPresent());
         assertEquals("Bartek", found.get().getName());
     }
@@ -40,7 +38,7 @@ public class PassengerServiceTest {
     @Test
     void duplicateIdThrows() {
         service.create(Passenger.builder()
-                .passengerId("B2")
+                .passengerId("P2")
                 .name("Bob")
                 .email("b@atu.ie")
                 .build());
