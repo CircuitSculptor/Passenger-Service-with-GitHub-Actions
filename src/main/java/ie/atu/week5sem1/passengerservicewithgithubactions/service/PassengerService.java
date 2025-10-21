@@ -1,5 +1,4 @@
 package ie.atu.week5sem1.passengerservicewithgithubactions.service;
-//import org.springframework.stereotype.Service;
 
 import ie.atu.week5sem1.passengerservicewithgithubactions.model.Passenger;
 import org.springframework.stereotype.Service;
@@ -7,8 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-// GitHub Actions Test
-// GitHub Actions TestV2 FINAL
 
 @Service
 public class PassengerService {
@@ -55,5 +52,4 @@ public class PassengerService {
         }
         return false;
     }
-
 }
