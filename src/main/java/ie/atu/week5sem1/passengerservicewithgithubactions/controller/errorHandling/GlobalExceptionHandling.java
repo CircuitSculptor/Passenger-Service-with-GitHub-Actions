@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandling {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public String showErrorDetails(MethodArgumentNotValidException mae)
+    public ExceptionDetails showErrorDetails(MethodArgumentNotValidException mae)
     {
-        return "There is an issue" + mae.getBindingResult().getFieldError().getDefaultMessage();
+        ExceptionDetails exceptionDetails = new ExceptionDetails();
+        exceptionDetails.setFieldName(mae.getBindingResult().getFieldError().getField());
+        exceptionDetails.setFieldValue(mae.getBindingResult().getFieldError().getDefaultMessage());
+        return exceptionDetails;
     }
 }
