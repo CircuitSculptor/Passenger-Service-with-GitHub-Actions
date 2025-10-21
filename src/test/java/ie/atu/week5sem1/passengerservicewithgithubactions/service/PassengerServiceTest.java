@@ -68,4 +68,14 @@ public class PassengerServiceTest {
         assertEquals("name_New", result.get().getName());
         assertEquals("new@atu.ie", result.get().getEmail());
     }
+
+    @Test
+    void testUpdatePassengerNotFound() {
+        Optional<Passenger> result = service.updateById("UNKOWN", Passenger.builder()
+                .name("Unkown")
+                .email("uknown@atu.ie")
+                .build());
+
+        assertTrue(result.isEmpty());
+    }
 }
