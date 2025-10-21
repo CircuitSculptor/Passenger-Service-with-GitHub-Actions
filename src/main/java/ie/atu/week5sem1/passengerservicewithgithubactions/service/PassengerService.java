@@ -45,4 +45,15 @@ public class PassengerService {
         store.add(p);
         return p;
     }
+
+    public boolean deleteById(String id) {
+        for (int i = 0; i < store.size(); i++) {
+            if (store.get(i).getPassengerId().equals(id)) {
+                store.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
