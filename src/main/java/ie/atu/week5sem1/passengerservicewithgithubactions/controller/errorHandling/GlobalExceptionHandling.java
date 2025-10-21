@@ -27,8 +27,11 @@ public class GlobalExceptionHandling {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> showDuplicateError(DuplicateException de)
+    public ResponseEntity<ExceptionDetails> showDuplicateError(DuplicateException de)
     {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(de.getMessage());
+        ExceptionDetails exceptionDetails = new ExceptionDetails();
+        exceptionDetails.setFieldName("Passenger ID");
+        exceptionDetails.setFieldValue(de.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
     }
 }
