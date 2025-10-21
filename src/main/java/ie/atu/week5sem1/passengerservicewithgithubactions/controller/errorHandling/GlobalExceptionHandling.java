@@ -25,4 +25,13 @@ public class GlobalExceptionHandling {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionDetails> showDuplicateError(DuplicateException de)
+    {
+        ExceptionDetails exceptionDetails = new ExceptionDetails();
+        exceptionDetails.setFieldName("Passenger ID");
+        exceptionDetails.setFieldValue(de.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
+    }
 }
