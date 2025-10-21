@@ -50,4 +50,22 @@ public class PassengerServiceTest {
                         .email("bob@ex.com")
                         .build()));
     }
+
+    @Test
+    void testUpdatePassengerSuccess() {
+        service.create(Passenger.builder()
+                .passengerId("U1")
+                .name("name_Old")
+                .email("old@atu.ie")
+                .build());
+
+        Optional<Passenger> result = service.updateById("U1", Passenger.builder()
+                .name("New Name")
+                .email("new@atu.ie")
+                .build());
+
+        assertTrue(result.isPresent());
+        assertEquals("New Name", result.get().getName());
+        assertEquals("new@atu.ie", result.get().getEmail());
+    }
 }
