@@ -13,7 +13,7 @@ import java.util.List;
 @RestControllerAdvice
 public class GlobalExceptionHandling {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<ExceptionDetails> showErrorDetails(MethodArgumentNotValidException mae)
+    public ResponseEntity<List<ExceptionDetails>> showErrorDetails(MethodArgumentNotValidException mae)
     {
         List<ExceptionDetails> errorList = new ArrayList<>();
         for (FieldError fieldError : mae.getBindingResult().getFieldErrors())
@@ -23,6 +23,6 @@ public class GlobalExceptionHandling {
             exceptionDetails.setFieldValue(fieldError.getDefaultMessage());
             errorList.add(exceptionDetails);
         }
-        return errorList;
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
     }
 }
