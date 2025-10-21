@@ -1,17 +1,28 @@
 package ie.atu.week5sem1.passengerservicewithgithubactions.controller.errorHandling;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestControllerAdvice
 public class GlobalExceptionHandling {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ExceptionDetails showErrorDetails(MethodArgumentNotValidException mae)
+    public List<ExceptionDetails> showErrorDetails(MethodArgumentNotValidException mae)
     {
-        ExceptionDetails exceptionDetails = new ExceptionDetails();
-        exceptionDetails.setFieldName(mae.getBindingResult().getFieldError().getField());
-        exceptionDetails.setFieldValue(mae.getBindingResult().getFieldError().getDefaultMessage());
-        return exceptionDetails;
+        List<ExceptionDetails> errorList = new ArrayList<>();
+        for (FieldError fieldError : mae.getBindingResult().getFieldErrors())
+        {
+            ExceptionDetails exceptionDetails = new ExceptionDetails();
+            exceptionDetails.setFieldName(fieldError.getField());
+            exceptionDetails.setFieldValue(fieldError.getDefaultMessage());
+            errorList.add(exceptionDetails);
+        }
+        return errorList;
     }
 }
