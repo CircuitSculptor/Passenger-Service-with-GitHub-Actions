@@ -95,7 +95,7 @@ public class PassengerServiceTest {
     void testDeletePassengerNotFound() {
         boolean deleted = service.deleteById("ERROR");
         // Seems incorrect but is the only way to get the test to pass
-        //aseertTrue(deleted);
+        //assertTrue(deleted);
         assertFalse(deleted);
     }
 }
