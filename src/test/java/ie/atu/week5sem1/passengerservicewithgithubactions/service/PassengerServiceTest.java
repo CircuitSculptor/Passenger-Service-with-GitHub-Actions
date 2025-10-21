@@ -78,4 +78,18 @@ public class PassengerServiceTest {
 
         assertTrue(result.isEmpty());
     }
+
+    @Test
+    void testDeletePaeengerSuccess() {
+        service.create(Passenger.builder()
+                .passengerId("D1")
+                .name("name_DEL")
+                .email("del@atu.ie")
+                .build());
+
+        boolean deleted = service.deleteById("D1");
+
+        assertTrue(deleted);
+        assertTrue(service.findById("D1").isEmpty());
+    }
 }
