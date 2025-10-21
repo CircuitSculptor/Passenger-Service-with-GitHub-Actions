@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandling {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public String showErrorDetails()
+    public String showErrorDetails(MethodArgumentNotValidException mae)
     {
-        return "There is an issue";
+        return "There is an issue" + mae.getBindingResult().getFieldError().getDefaultMessage();
     }
 }
