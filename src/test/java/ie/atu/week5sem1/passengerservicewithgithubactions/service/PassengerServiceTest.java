@@ -60,12 +60,12 @@ public class PassengerServiceTest {
                 .build());
 
         Optional<Passenger> result = service.updateById("U1", Passenger.builder()
-                .name("New Name")
+                .name("name_New")
                 .email("new@atu.ie")
                 .build());
 
         assertTrue(result.isPresent());
-        assertEquals("New Name", result.get().getName());
+        assertEquals("name_New", result.get().getName());
         assertEquals("new@atu.ie", result.get().getEmail());
     }
 }
