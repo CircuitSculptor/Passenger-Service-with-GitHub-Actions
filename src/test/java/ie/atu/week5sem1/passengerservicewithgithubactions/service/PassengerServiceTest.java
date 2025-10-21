@@ -1,5 +1,6 @@
 package ie.atu.week5sem1.passengerservicewithgithubactions.service;
 
+import ie.atu.week5sem1.passengerservicewithgithubactions.controller.errorHandling.DuplicateException;
 import ie.atu.week5sem1.passengerservicewithgithubactions.model.Passenger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ public class PassengerServiceTest {
                 .email("b@atu.ie")
                 .build());
 
-        assertThrows(IllegalStateException.class,  () ->
+        assertThrows(DuplicateException.class,  () ->
                 service.create(Passenger.builder()
                         .passengerId("P2")
                         .name("Bobby")
