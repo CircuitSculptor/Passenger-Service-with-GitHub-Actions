@@ -79,7 +79,7 @@ public class PassengerServiceTest {
     }
 
     @Test
-    void testDeletePaeengerSuccess() {
+    void testDeletePassengerSuccess() {
         service.create(Passenger.builder()
                 .passengerId("D1")
                 .name("name_DEL")
