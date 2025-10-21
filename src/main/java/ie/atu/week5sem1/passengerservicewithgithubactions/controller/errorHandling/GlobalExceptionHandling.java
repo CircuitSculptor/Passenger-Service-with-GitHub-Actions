@@ -27,8 +27,8 @@ public class GlobalExceptionHandling {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<DuplicateException> showDuplicateError(DuplicateException de)
+    public ResponseEntity<String> showDuplicateError(DuplicateException de)
     {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(de);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(de.getMessage());
     }
 }
