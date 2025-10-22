@@ -32,7 +32,7 @@ public class PassengerController {
          if (maybe.isPresent()) {
              return ResponseEntity.ok(maybe.get());
          } else {
-             return ResponseEntity.notFound().build();
+             throw new PassengerNotFoundException(id);
          }
      }
 
@@ -43,7 +43,6 @@ public class PassengerController {
             return ResponseEntity.ok(maybeUpdated.get());
         } else {
             throw new PassengerNotFoundException(id);
-            //return ResponseEntity.notFound().build();
         }
     }
 
