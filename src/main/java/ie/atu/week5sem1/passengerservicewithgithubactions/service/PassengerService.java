@@ -1,6 +1,7 @@
 package ie.atu.week5sem1.passengerservicewithgithubactions.service;
 
 import ie.atu.week5sem1.passengerservicewithgithubactions.controller.errorHandling.DuplicateException;
+import ie.atu.week5sem1.passengerservicewithgithubactions.controller.errorHandling.PassengerNotFoundException;
 import ie.atu.week5sem1.passengerservicewithgithubactions.model.Passenger;
 import org.springframework.stereotype.Service;
 

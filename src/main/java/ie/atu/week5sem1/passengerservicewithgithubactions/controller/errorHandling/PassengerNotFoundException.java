@@ -4,7 +4,7 @@ public class PassengerNotFoundException extends RuntimeException
 {
     private String message;
     private String field;
-    public PassengerNotFoundException()
+    public PassengerNotFoundException(String field, String message)
     {
         this.field = field;
         this.message = message;
