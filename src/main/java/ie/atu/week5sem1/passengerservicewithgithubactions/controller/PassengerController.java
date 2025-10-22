@@ -60,7 +60,7 @@ public class PassengerController {
          if (removedId) {
              return ResponseEntity.ok().build();
          }  else {
-             return ResponseEntity.notFound().build();
+             throw new PassengerNotFoundException(id);
          }
      }
 }
