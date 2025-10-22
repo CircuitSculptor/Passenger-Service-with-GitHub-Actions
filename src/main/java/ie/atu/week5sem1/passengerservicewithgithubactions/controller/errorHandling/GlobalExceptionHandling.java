@@ -34,4 +34,15 @@ public class GlobalExceptionHandling {
         exceptionDetails.setFieldValue(de.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
     }
+
+    @ExceptionHandler(PassengerNotFoundException.class)
+    public ResponseEntity<ExceptionDetails> showPassengerNotFoundError(PassengerNotFoundException pe)
+    {
+        ExceptionDetails exceptionDetails = new ExceptionDetails();
+        exceptionDetails.setFieldName("Passenger ID");
+        exceptionDetails.setFieldValue(pe.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionDetails);
+        //return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
+    }
+
 }
