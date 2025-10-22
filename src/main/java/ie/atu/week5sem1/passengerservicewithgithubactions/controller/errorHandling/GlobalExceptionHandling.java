@@ -26,23 +26,19 @@ public class GlobalExceptionHandling {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(DuplicateException.class)
     public ResponseEntity<ExceptionDetails> showDuplicateError(DuplicateException de)
     {
         ExceptionDetails exceptionDetails = new ExceptionDetails();
         exceptionDetails.setFieldName("Passenger ID");
         exceptionDetails.setFieldValue(de.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
+
     }
 
     @ExceptionHandler(PassengerNotFoundException.class)
-    public ResponseEntity<ExceptionDetails> showPassengerNotFoundError(PassengerNotFoundException pe)
+    public String showPassengerNotFoundError(PassengerNotFoundException pe)
     {
-        ExceptionDetails exceptionDetails = new ExceptionDetails();
-        exceptionDetails.setFieldName("Passenger ID");
-        exceptionDetails.setFieldValue(pe.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionDetails);
-        //return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
+        return "Passenger With ID: " + pe.getMessage() + " Not Found";
     }
-
 }
