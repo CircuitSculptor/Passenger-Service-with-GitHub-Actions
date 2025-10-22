@@ -35,11 +35,31 @@ public class PassengerController {
          }
      }
 
-     @PostMapping
+    @PutMapping("/{id}")
+    public ResponseEntity<Passenger> updateById(@PathVariable String id, @Valid @RequestBody Passenger pUpdated) {
+        Optional<Passenger> maybeUpdated = service.updateById(id, pUpdated);
+        if (maybeUpdated.isPresent()) {
+            return ResponseEntity.ok(maybeUpdated.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
      public ResponseEntity<Passenger> create(@Valid @RequestBody Passenger p) {
          Passenger created = service.create(p);
          return ResponseEntity
                  .created(URI.create("/api/passengers/" + created.getPassengerId()))
                  .body(created);
+     }
+
+     @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+         boolean removedId = service.deleteById(id);
+         if (removedId) {
+             return ResponseEntity.ok().build();
+         }  else {
+             return ResponseEntity.notFound().build();
+         }
      }
 }
