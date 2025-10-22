@@ -1,5 +1,6 @@
 package ie.atu.week5sem1.passengerservicewithgithubactions.controller;
 
+import ie.atu.week5sem1.passengerservicewithgithubactions.controller.errorHandling.PassengerNotFoundException;
 import ie.atu.week5sem1.passengerservicewithgithubactions.model.Passenger;
 import ie.atu.week5sem1.passengerservicewithgithubactions.service.PassengerService;
 import jakarta.validation.Valid;
@@ -41,7 +42,8 @@ public class PassengerController {
         if (maybeUpdated.isPresent()) {
             return ResponseEntity.ok(maybeUpdated.get());
         } else {
-            return ResponseEntity.notFound().build();
+            throw new PassengerNotFoundException(id);
+            //return ResponseEntity.notFound().build();
         }
     }
 
