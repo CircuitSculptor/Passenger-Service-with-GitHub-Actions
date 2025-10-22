@@ -42,6 +42,7 @@ public class GlobalExceptionHandling {
         exceptionDetails.setFieldName("Passenger ID");
         exceptionDetails.setFieldValue(pe.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionDetails);
+        //return ResponseEntity.status(HttpStatus.CONFLICT).body(exceptionDetails);
     }
 
 }
